@@ -131,10 +131,10 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({
           <div className="flex items-center gap-1.5">
             <motion.div
               key={itemCount}
-              initial={{ scale: 0.7, rotate: -20 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: 'spring', stiffness: 500, damping: 20 }}
-              className="w-6 h-6 rounded-lg bg-linear-to-tr from-amber-500 to-orange-500 text-slate-950 flex items-center justify-center shadow-md shadow-amber-500/20 font-black text-xs"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ type: 'spring', stiffness: 500, damping: 15 }}
+              className="w-6 h-6 rounded-lg bg-linear-to-tr from-amber-500 to-orange-500 text-slate-950 flex items-center justify-center shadow-md shadow-amber-500/30 font-black text-xs ring-2 ring-amber-400/40"
             >
               {itemCount}
             </motion.div>

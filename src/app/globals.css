@@ -15,31 +15,51 @@ body {
 }
 
 /* =========================================================================
-   $1000 Ultra-Luxury Fluid Glows, Shimmers & Physics Keyframes
+   $4,000 High-End Clean 2D Motion Graphics & Micro-Physics (Zero 3D)
    ========================================================================= */
 
 @keyframes luxury-shimmer {
-  0% { transform: translateX(-100%) skewX(-15deg); }
-  50%, 100% { transform: translateX(200%) skewX(-15deg); }
+  0% { transform: translateX(-120%); opacity: 0; }
+  20% { opacity: 0.6; }
+  60% { opacity: 0.6; }
+  100% { transform: translateX(220%); opacity: 0; }
 }
 
 @keyframes amber-glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(245, 158, 11, 0.25), 0 0 30px rgba(245, 158, 11, 0.1);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4), 0 2px 8px rgba(245, 158, 11, 0.15);
   }
   50% {
-    box-shadow: 0 0 25px rgba(245, 158, 11, 0.5), 0 0 45px rgba(245, 158, 11, 0.2);
+    box-shadow: 0 0 0 6px rgba(245, 158, 11, 0), 0 4px 18px rgba(245, 158, 11, 0.35);
   }
+}
+
+@keyframes clean-badge-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.85; }
+}
+
+@keyframes laser-glow-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes float-gentle {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-3px); }
+  50% { transform: translateY(-2.5px); }
 }
 
-@keyframes ripple-wave {
-  0% { transform: scale(0.8); opacity: 1; }
-  100% { transform: scale(2.2); opacity: 0; }
+@keyframes cart-bounce-impact {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.22); }
+  65% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+@keyframes item-added-flash {
+  0% { background-color: rgba(245, 158, 11, 0.35); }
+  100% { background-color: transparent; }
 }
 
 .animate-shimmer-sweep {
@@ -49,26 +69,37 @@ body {
 .animate-shimmer-sweep::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 60%;
+  inset: 0;
+  width: 50%;
   height: 100%;
   background: linear-gradient(
     90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
   );
-  animation: luxury-shimmer 2.8s infinite;
+  animation: luxury-shimmer 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   pointer-events: none;
 }
 
 .glow-amber-luxury {
-  animation: amber-glow-pulse 3s infinite ease-in-out;
+  animation: amber-glow-pulse 2.2s infinite ease-in-out;
+}
+
+.animate-badge-pop {
+  animation: clean-badge-pulse 2s infinite ease-in-out;
 }
 
 .animate-float-subtle {
-  animation: float-gentle 4s ease-in-out infinite;
+  animation: float-gentle 3.5s ease-in-out infinite;
+}
+
+.animate-cart-impact {
+  animation: cart-bounce-impact 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.item-flash {
+  animation: item-added-flash 0.5s ease-out;
 }
 
 /* Custom Sleek Scrollbar */

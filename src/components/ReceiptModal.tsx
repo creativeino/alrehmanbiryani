@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Order, CartItem } from '@/data/menu';
 import { Printer, X, CheckCircle2, UtensilsCrossed, UserCheck, Layers, Flame, Bike } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface ReceiptModalProps {
   order: Order;
@@ -82,8 +83,14 @@ export const ReceiptModal: React.FC<ReceiptModalProps> = ({ order, onClose }) =>
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-1.5 sm:p-4 overflow-y-auto">
-      {/* Outer Modal Container */}
-      <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[96dvh] sm:max-h-[92vh] print:m-0 print:p-0 print:border-none print:shadow-none print:max-w-none print:max-h-none print:w-auto">
+      {/* Outer Modal Container with Elastic Reveal */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 25 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 15 }}
+        transition={{ type: 'spring', stiffness: 450, damping: 28 }}
+        className="bg-white rounded-2xl max-w-md w-full shadow-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[96dvh] sm:max-h-[92vh] print:m-0 print:p-0 print:border-none print:shadow-none print:max-w-none print:max-h-none print:w-auto"
+      >
         
         {/* Top Header Bar */}
         <div className="bg-slate-900 text-white p-3 sm:p-3.5 flex justify-between items-center print:hidden shrink-0">
@@ -725,7 +732,7 @@ export const ReceiptModal: React.FC<ReceiptModalProps> = ({ order, onClose }) =>
             Done
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

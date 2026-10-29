@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MenuItem } from '@/data/menu';
 import { X, Plus, PlusCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface AddMenuItemModalProps {
   categories: string[];
@@ -50,8 +51,21 @@ export const AddMenuItemModal: React.FC<AddMenuItemModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-      <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.18 } }}
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.94, y: 15 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 10, transition: { duration: 0.15 } }}
+        transition={{ type: 'spring', stiffness: 420, damping: 28 }}
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden"
+      >
         {/* Header */}
         <div className="bg-slate-900 text-white p-3.5 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -183,7 +197,7 @@ export const AddMenuItemModal: React.FC<AddMenuItemModalProps> = ({
             </button>
           </div>
         </form>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };

@@ -11,6 +11,7 @@ import {
   RotateCcw,
   CheckCircle2
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface OrderHistoryModalProps {
   orders: Order[];
@@ -66,8 +67,21 @@ export const OrderHistoryModal: React.FC<OrderHistoryModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-2 sm:p-4 overflow-y-auto">
-      <div className="bg-white border border-slate-200 text-slate-800 rounded-2xl max-w-4xl w-full max-h-[92dvh] h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.18 } }}
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-2 sm:p-4 overflow-y-auto"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.94, y: 15 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 10, transition: { duration: 0.15 } }}
+        transition={{ type: 'spring', stiffness: 420, damping: 28 }}
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white border border-slate-200 text-slate-800 rounded-2xl max-w-4xl w-full max-h-[92dvh] h-[85vh] flex flex-col shadow-2xl overflow-hidden"
+      >
         {/* Header */}
         <div className="p-3 sm:p-4 bg-slate-900 text-white flex items-center justify-between">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
@@ -355,7 +369,7 @@ export const OrderHistoryModal: React.FC<OrderHistoryModalProps> = ({
             </div>
           )}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };

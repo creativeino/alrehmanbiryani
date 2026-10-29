@@ -19,6 +19,8 @@ import { MenuCardModal } from '@/components/MenuCardModal';
 import { AddMenuItemModal } from '@/components/AddMenuItemModal';
 import { EditMenuItemModal } from '@/components/EditMenuItemModal';
 import { FlyingItemBurst, Particle } from '@/components/FlyingItemBurst';
+import { soundFX } from '@/lib/sound';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Clock,
   Edit3,
@@ -265,6 +267,9 @@ export default function POSPage() {
 
   // Cart operations with Flying Particle Burst
   const handleAddToCart = (item: MenuItem, e?: React.MouseEvent) => {
+    // Sound FX
+    soundFX.playItemAdded();
+
     // Trigger Flying Burst Animation
     if (e) {
       const clickX = e.clientX;
@@ -396,27 +401,30 @@ export default function POSPage() {
     };
 
     try {
+      // Sound FX
+      soundFX.playCheckoutSuccess();
+
       // $1000 Luxury Multi-Stage Celebration Confetti
       confetti({
-        particleCount: 50,
-        spread: 60,
-        origin: { y: 0.7, x: 0.5 },
+        particleCount: 75,
+        spread: 70,
+        origin: { y: 0.65, x: 0.5 },
         colors: ['#f59e0b', '#fbbf24', '#10b981', '#f97316', '#ffffff'],
       });
       setTimeout(() => {
         confetti({
-          particleCount: 35,
+          particleCount: 50,
           angle: 60,
-          spread: 55,
-          origin: { x: 0 },
-          colors: ['#f59e0b', '#10b981'],
+          spread: 65,
+          origin: { x: 0.1, y: 0.7 },
+          colors: ['#f59e0b', '#10b981', '#ffffff'],
         });
         confetti({
-          particleCount: 35,
+          particleCount: 50,
           angle: 120,
-          spread: 55,
-          origin: { x: 1 },
-          colors: ['#f59e0b', '#10b981'],
+          spread: 65,
+          origin: { x: 0.9, y: 0.7 },
+          colors: ['#f59e0b', '#10b981', '#ffffff'],
         });
       }, 150);
     } catch (e) {
@@ -822,64 +830,71 @@ export default function POSPage() {
         </div>
       )}
 
-      {/* Modals */}
+      {/* Modals with AnimatePresence for Butter-Smooth Open/Close Physics */}
       <FlyingItemBurst
         particles={burstParticles}
         onComplete={handleParticleComplete}
       />
 
-      {activeReceiptOrder && (
-        <ReceiptModal
-          order={activeReceiptOrder}
-          onClose={() => setActiveReceiptOrder(null)}
-        />
-      )}
+      <AnimatePresence>
+        {activeReceiptOrder && (
+          <ReceiptModal
+            key="receipt-modal"
+            order={activeReceiptOrder}
+            onClose={() => setActiveReceiptOrder(null)}
+          />
+        )}
 
-      {showHistoryModal && (
-        <OrderHistoryModal
-          orders={orderHistory}
-          defaultFilter={historyDefaultFilter}
-          onClose={() => setShowHistoryModal(false)}
-          onViewOrderReceipt={(order) => {
-            setShowHistoryModal(false);
-            setActiveReceiptOrder(order);
-          }}
-          onEditOrder={handleEditOrder}
-          onDeleteOrder={handleDeleteOrder}
-          onCancelOrder={handleCancelOrder}
-          onRestoreOrder={handleRestoreOrder}
-        />
-      )}
+        {showHistoryModal && (
+          <OrderHistoryModal
+            key="history-modal"
+            orders={orderHistory}
+            defaultFilter={historyDefaultFilter}
+            onClose={() => setShowHistoryModal(false)}
+            onViewOrderReceipt={(order) => {
+              setShowHistoryModal(false);
+              setActiveReceiptOrder(order);
+            }}
+            onEditOrder={handleEditOrder}
+            onDeleteOrder={handleDeleteOrder}
+            onCancelOrder={handleCancelOrder}
+            onRestoreOrder={handleRestoreOrder}
+          />
+        )}
 
-      {showDailySalesModal && (
-        <DailySalesModal
-          orders={orderHistory}
-          currentDateStr={currentDateStr || new Date().toLocaleDateString('en-GB')}
-          onClose={() => setShowDailySalesModal(false)}
-        />
-      )}
+        {showDailySalesModal && (
+          <DailySalesModal
+            key="sales-modal"
+            orders={orderHistory}
+            currentDateStr={currentDateStr || new Date().toLocaleDateString('en-GB')}
+            onClose={() => setShowDailySalesModal(false)}
+          />
+        )}
 
-      {showMenuCardModal && (
-        <MenuCardModal onClose={() => setShowMenuCardModal(false)} />
-      )}
+        {showMenuCardModal && (
+          <MenuCardModal key="menu-card-modal" onClose={() => setShowMenuCardModal(false)} />
+        )}
 
-      {showAddMenuModal && (
-        <AddMenuItemModal
-          categories={categories}
-          onClose={() => setShowAddMenuModal(false)}
-          onAddItem={handleAddMenuItem}
-        />
-      )}
+        {showAddMenuModal && (
+          <AddMenuItemModal
+            key="add-item-modal"
+            categories={categories}
+            onClose={() => setShowAddMenuModal(false)}
+            onAddItem={handleAddMenuItem}
+          />
+        )}
 
-      {editingMenuItem && (
-        <EditMenuItemModal
-          item={editingMenuItem}
-          categories={categories}
-          onClose={() => setEditingMenuItem(null)}
-          onSave={handleUpdateMenuItem}
-          onDelete={handleDeleteMenuItem}
-        />
-      )}
+        {editingMenuItem && (
+          <EditMenuItemModal
+            key="edit-item-modal"
+            item={editingMenuItem}
+            categories={categories}
+            onClose={() => setEditingMenuItem(null)}
+            onSave={handleUpdateMenuItem}
+            onDelete={handleDeleteMenuItem}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

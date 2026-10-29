@@ -136,7 +136,7 @@ export const MenuGrid: React.FC<MenuGridProps> = ({
       <div className="flex-1 overflow-y-auto p-2 sm:p-3 pb-20 lg:pb-3">
         <motion.div
           layout
-          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2 sm:gap-2.5"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 min-[1800px]:grid-cols-5 gap-2 sm:gap-2.5"
         >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => {
@@ -148,37 +148,37 @@ export const MenuGrid: React.FC<MenuGridProps> = ({
                 <motion.div
                   key={item.id}
                   layout
-                  initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                  initial={{ opacity: 0, y: 10, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.85, transition: { duration: 0.15 } }}
+                  exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.12 } }}
                   transition={{
                     type: 'spring',
-                    stiffness: 420,
-                    damping: 26,
-                    delay: Math.min(index * 0.02, 0.2)
+                    stiffness: 450,
+                    damping: 30,
+                    delay: Math.min(index * 0.015, 0.15)
                   }}
                   whileHover={{
-                    y: -3,
-                    scale: 1.02,
-                    boxShadow: '0 12px 24px -6px rgba(245, 158, 11, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04)',
+                    y: -2,
+                    scale: 1.015,
+                    boxShadow: '0 10px 20px -5px rgba(245, 158, 11, 0.15), 0 3px 8px rgba(0, 0, 0, 0.04)',
                   }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={{ scale: 0.97 }}
                   onClick={(e) => handleItemClick(item, e)}
-                  className={`group relative bg-white rounded-xl overflow-hidden border cursor-pointer flex flex-col justify-between select-none transition-colors duration-200 ${
+                  className={`group relative bg-white rounded-xl overflow-hidden border cursor-pointer flex flex-col justify-between select-none transition-colors duration-150 ${
                     isClicked
-                      ? 'border-amber-500 ring-2 ring-amber-500/30 shadow-lg'
+                      ? 'border-amber-500 ring-2 ring-amber-500/40 shadow-md'
                       : 'border-slate-200/90 hover:border-amber-400 shadow-[0_1px_4px_rgba(0,0,0,0.03)]'
                   }`}
                 >
-                  {/* Subtle Gradient Glow Ring on Hover */}
-                  <div className="absolute inset-0 rounded-xl bg-linear-to-r from-amber-500/0 via-amber-500/5 to-orange-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  {/* Subtle Clean 2D Glow Overlay on Hover */}
+                  <div className="absolute inset-0 rounded-xl bg-linear-to-r from-amber-500/0 via-amber-500/5 to-orange-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none" />
 
                   {/* Food Image Banner (Compact Height: 24 / 96px) */}
                   <div className="relative h-24 w-full overflow-hidden bg-slate-100">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108"
+                      className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
                       loading="lazy"
                     />
                     
@@ -236,15 +236,15 @@ export const MenuGrid: React.FC<MenuGridProps> = ({
                       </div>
                     </div>
 
-                    {/* Add Button with $1000 Micro Spring */}
+                    {/* Add Button with High-Precision 2D Spring */}
                     <motion.div
                       animate={
                         isClicked
-                          ? { scale: [1, 1.35, 1], rotate: [0, -18, 0] }
-                          : {}
+                          ? { scale: 1.25 }
+                          : { scale: 1 }
                       }
-                      transition={{ type: 'spring', stiffness: 600, damping: 18 }}
-                      className={`w-6 h-6 rounded-lg flex items-center justify-center font-bold shrink-0 transition-all duration-200 shadow-2xs ${
+                      transition={{ type: 'spring', stiffness: 600, damping: 20 }}
+                      className={`w-6 h-6 rounded-lg flex items-center justify-center font-bold shrink-0 transition-all duration-150 shadow-2xs ${
                         isClicked
                           ? 'bg-emerald-500 text-white shadow-emerald-500/40 shadow-sm'
                           : 'bg-amber-100/70 text-amber-900 group-hover:bg-linear-to-tr group-hover:from-amber-500 group-hover:to-orange-500 group-hover:text-slate-950 group-hover:shadow-amber-500/30'

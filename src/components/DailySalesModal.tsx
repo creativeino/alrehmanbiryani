@@ -15,6 +15,7 @@ import {
   Layers,
   ChevronRight
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface DailySalesModalProps {
   orders: Order[];
@@ -99,8 +100,21 @@ export const DailySalesModal: React.FC<DailySalesModalProps> = ({
   const is58 = printerWidth === '58mm';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-1.5 sm:p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl max-w-4xl w-full shadow-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[96dvh] sm:max-h-[92vh] print:m-0 print:p-0 print:border-none print:shadow-none print:max-w-none print:max-h-none print:w-auto">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.18 } }}
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-1.5 sm:p-4 overflow-y-auto"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.94, y: 15 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 10, transition: { duration: 0.15 } }}
+        transition={{ type: 'spring', stiffness: 420, damping: 28 }}
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white rounded-2xl max-w-4xl w-full shadow-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[96dvh] sm:max-h-[92vh] print:m-0 print:p-0 print:border-none print:shadow-none print:max-w-none print:max-h-none print:w-auto"
+      >
         
         {/* Top Header Bar (Hidden in print) */}
         <div className="bg-slate-900 text-white p-3 sm:p-4 flex justify-between items-center print:hidden shrink-0">
@@ -468,7 +482,7 @@ export const DailySalesModal: React.FC<DailySalesModalProps> = ({
             Close
           </button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };

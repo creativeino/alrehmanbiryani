@@ -77,7 +77,7 @@ export const MENU_ITEMS: MenuItem[] = [
     variant: 'Single',
     price: 300,
     popular: true,
-    image: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=500&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=500&auto=format&fit=crop&q=80',
     description: 'Signature tender beef boti cooked in traditional rich spices.'
   },
   {
@@ -96,7 +96,7 @@ export const MENU_ITEMS: MenuItem[] = [
     variant: '1 Kg',
     price: 760,
     popular: true,
-    image: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=500&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=500&auto=format&fit=crop&q=80',
     description: '1 Kg traditional royal beef biryani.'
   },
 
@@ -108,7 +108,7 @@ export const MENU_ITEMS: MenuItem[] = [
     variant: 'Single',
     price: 300,
     popular: true,
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1785571903568-f53fcff99181?w=500&auto=format&fit=crop&q=80',
     description: 'Long-grain pulao topped with carrots, raisins & succulent beef.'
   },
   {
@@ -117,7 +117,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Beef Afghani Pulao',
     variant: 'Half Kg',
     price: 380,
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1785571903557-dce44dcf3eab?w=500&auto=format&fit=crop&q=80',
     description: 'Half Kg authentic Kabuli Afghani beef pulao.'
   },
   {
@@ -127,7 +127,7 @@ export const MENU_ITEMS: MenuItem[] = [
     variant: '1 Kg',
     price: 760,
     popular: true,
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1785571903568-f53fcff99181?w=500&auto=format&fit=crop&q=80',
     description: '1 Kg traditional Afghani pulao with dry fruits & beef chunk.'
   },
 
@@ -138,7 +138,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'White Beef Pulao',
     variant: 'Single',
     price: 300,
-    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1785571903568-f53fcff99181?w=500&auto=format&fit=crop&q=80',
     description: 'Authentic Yakhni white beef pulao simmered with whole spices.'
   },
   {
@@ -147,7 +147,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'White Beef Pulao',
     variant: 'Half Kg',
     price: 380,
-    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1785571903557-dce44dcf3eab?w=500&auto=format&fit=crop&q=80',
     description: 'Half Kg fragrant yakhni pulao with juicy beef chunks.'
   },
   {
@@ -156,7 +156,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'White Beef Pulao',
     variant: '1 Kg',
     price: 760,
-    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1785571903568-f53fcff99181?w=500&auto=format&fit=crop&q=80',
     description: '1 Kg slow-simmered aromatic white beef yakhni pulao.'
   },
 
@@ -167,7 +167,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Chicken Pulao',
     variant: 'Single',
     price: 220,
-    image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1785571903557-dce44dcf3eab?w=500&auto=format&fit=crop&q=80',
     description: 'Savory chicken yakhni pulao with authentic desi taste.'
   },
   {
@@ -176,7 +176,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Chicken Pulao',
     variant: 'Half Kg',
     price: 280,
-    image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1785571903568-f53fcff99181?w=500&auto=format&fit=crop&q=80',
     description: 'Half Kg flavorful Chicken Yakhni Pulao.'
   },
   {
@@ -185,7 +185,7 @@ export const MENU_ITEMS: MenuItem[] = [
     category: 'Chicken Pulao',
     variant: '1 Kg',
     price: 560,
-    image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1785571903557-dce44dcf3eab?w=500&auto=format&fit=crop&q=80',
     description: '1 Kg classic chicken yakhni pulao.'
   },
 
