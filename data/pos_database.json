@@ -1,0 +1,228 @@
+{
+  "menu": [
+    {
+      "id": "chk-bir-single",
+      "name": "Chicken Biryani",
+      "category": "Chicken",
+      "variant": "Single",
+      "price": 220,
+      "popular": true,
+      "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&auto=format&fit=crop&q=80",
+      "description": "Traditional spicy Karachi biryani with tender chicken & aloo."
+    },
+    {
+      "id": "chk-bir-half",
+      "name": "Chicken Biryani",
+      "category": "Chicken",
+      "variant": "Half Kg",
+      "price": 280,
+      "image": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&auto=format&fit=crop&q=80",
+      "description": "Fresh dum-cooked half kg spicy chicken biryani."
+    },
+    {
+      "id": "chk-bir-1kg",
+      "name": "Chicken Biryani",
+      "category": "Chicken",
+      "variant": "1 Kg",
+      "price": 560,
+      "popular": true,
+      "image": "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=500&auto=format&fit=crop&q=80",
+      "description": "1 Kg family pack of signature Al Rehman chicken biryani."
+    },
+    {
+      "id": "sada-bir-half",
+      "name": "Sada Biryani",
+      "category": "Chicken",
+      "variant": "Half Kg",
+      "price": 200,
+      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=80",
+      "description": "Fragrant masala-infused biryani rice (without meat)."
+    },
+    {
+      "id": "sada-bir-1kg",
+      "name": "Sada Biryani",
+      "category": "Chicken",
+      "variant": "1 Kg",
+      "price": 400,
+      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=80",
+      "description": "1 Kg fragrant masala biryani rice."
+    },
+    {
+      "id": "beef-bir-single",
+      "name": "Beef Biryani",
+      "category": "Beef Biryani",
+      "variant": "Single",
+      "price": 300,
+      "popular": true,
+      "image": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=500&auto=format&fit=crop&q=80",
+      "description": "Signature tender beef boti cooked in traditional rich spices."
+    },
+    {
+      "id": "beef-bir-half",
+      "name": "Beef Biryani",
+      "category": "Beef Biryani",
+      "variant": "Half Kg",
+      "price": 380,
+      "image": "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=500&auto=format&fit=crop&q=80",
+      "description": "Half Kg slow-cooked tender beef biryani."
+    },
+    {
+      "id": "beef-bir-1kg",
+      "name": "Beef Biryani",
+      "category": "Beef Biryani",
+      "variant": "1 Kg",
+      "price": 760,
+      "popular": true,
+      "image": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=500&auto=format&fit=crop&q=80",
+      "description": "1 Kg traditional royal beef biryani."
+    },
+    {
+      "id": "afghani-pulao-single",
+      "name": "Beef Afghani Pulao",
+      "category": "Beef Afghani Pulao",
+      "variant": "Single",
+      "price": 300,
+      "popular": true,
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop&q=80",
+      "description": "Long-grain pulao topped with carrots, raisins & succulent beef."
+    },
+    {
+      "id": "afghani-pulao-half",
+      "name": "Beef Afghani Pulao",
+      "category": "Beef Afghani Pulao",
+      "variant": "Half Kg",
+      "price": 380,
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop&q=80",
+      "description": "Half Kg authentic Kabuli Afghani beef pulao."
+    },
+    {
+      "id": "afghani-pulao-1kg",
+      "name": "Beef Afghani Pulao",
+      "category": "Beef Afghani Pulao",
+      "variant": "1 Kg",
+      "price": 760,
+      "popular": true,
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop&q=80",
+      "description": "1 Kg traditional Afghani pulao with dry fruits & beef chunk."
+    },
+    {
+      "id": "white-beef-single",
+      "name": "White Beef Pulao",
+      "category": "White Beef Pulao",
+      "variant": "Single",
+      "price": 300,
+      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=80",
+      "description": "Authentic Yakhni white beef pulao simmered with whole spices."
+    },
+    {
+      "id": "white-beef-half",
+      "name": "White Beef Pulao",
+      "category": "White Beef Pulao",
+      "variant": "Half Kg",
+      "price": 380,
+      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=80",
+      "description": "Half Kg fragrant yakhni pulao with juicy beef chunks."
+    },
+    {
+      "id": "white-beef-1kg",
+      "name": "White Beef Pulao",
+      "category": "White Beef Pulao",
+      "variant": "1 Kg",
+      "price": 760,
+      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=80",
+      "description": "1 Kg slow-simmered aromatic white beef yakhni pulao."
+    },
+    {
+      "id": "chk-pulao-single",
+      "name": "Chicken Pulao",
+      "category": "Chicken Pulao",
+      "variant": "Single",
+      "price": 220,
+      "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&auto=format&fit=crop&q=80",
+      "description": "Savory chicken yakhni pulao with authentic desi taste."
+    },
+    {
+      "id": "chk-pulao-half",
+      "name": "Chicken Pulao",
+      "category": "Chicken Pulao",
+      "variant": "Half Kg",
+      "price": 280,
+      "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&auto=format&fit=crop&q=80",
+      "description": "Half Kg flavorful Chicken Yakhni Pulao."
+    },
+    {
+      "id": "chk-pulao-1kg",
+      "name": "Chicken Pulao",
+      "category": "Chicken Pulao",
+      "variant": "1 Kg",
+      "price": 560,
+      "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&auto=format&fit=crop&q=80",
+      "description": "1 Kg classic chicken yakhni pulao."
+    },
+    {
+      "id": "cold-drink-can",
+      "name": "Cold Drink Can (330ml)",
+      "category": "Beverages",
+      "variant": "330ml Can",
+      "price": 90,
+      "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop&q=80",
+      "description": "Chilled refreshing drink (Pakola / Coke / Sprite)."
+    },
+    {
+      "id": "cold-drink-1-5l",
+      "name": "Cold Drink 1.5 Liter",
+      "category": "Beverages",
+      "variant": "1.5L Bottle",
+      "price": 220,
+      "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop&q=80",
+      "description": "Family size chilled soft drink."
+    },
+    {
+      "id": "mineral-water",
+      "name": "Mineral Water (500ml)",
+      "category": "Beverages",
+      "variant": "500ml Bottle",
+      "price": 50,
+      "image": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=500&auto=format&fit=crop&q=80",
+      "description": "Clean drinking water."
+    }
+  ],
+  "categories": [
+    "All",
+    "Chicken",
+    "Beef Biryani",
+    "Beef Afghani Pulao",
+    "White Beef Pulao",
+    "Chicken Pulao",
+    "Beverages"
+  ],
+  "orders": [],
+  "tables": [
+    "T-1",
+    "T-2",
+    "T-3",
+    "T-4",
+    "T-5",
+    "T-6",
+    "T-7",
+    "T-8",
+    "Family-1",
+    "Family-2"
+  ],
+  "waiters": [
+    "Aslam",
+    "Rashid",
+    "Bilal",
+    "Farhan",
+    "Tariq"
+  ],
+  "riders": [
+    "Kamran (Bykea)",
+    "Zubair (Rider)"
+  ],
+  "settings": {
+    "restaurantName": "Al. Rehman Biryani & Pakwan Centre",
+    "orderTokenCounter": 101,
+    "lastUpdated": "2026-10-29T10:39:36.155Z"
+  }
+}
