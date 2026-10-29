@@ -248,3 +248,75 @@ body {
     @apply font-sans;
   }
 }
+
+/* =========================================================================
+   Thermal Receipt Print Engine (80mm & 58mm ESC/POS Roll Optimization)
+   ========================================================================= */
+
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Hide entire application shell during printing except the receipt modal */
+  body > * {
+    visibility: hidden;
+  }
+
+  /* Only make receipt dialog and its thermal elements visible and printable */
+  .fixed:has(.thermal-slip),
+  .fixed:has(.thermal-slip) * {
+    visibility: visible;
+  }
+
+  .fixed:has(.thermal-slip) {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .print-page-break {
+    page-break-after: always;
+    break-after: page;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+  }
+
+  .thermal-slip {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 4mm 2mm !important;
+    color: #000000 !important;
+    background: #ffffff !important;
+    width: 100% !important;
+  }
+
+  .thermal-slip table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .thermal-slip * {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+}

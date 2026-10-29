@@ -14,6 +14,7 @@ import { MenuGrid } from '@/components/MenuGrid';
 import { CartSidebar } from '@/components/CartSidebar';
 import { ReceiptModal } from '@/components/ReceiptModal';
 import { OrderHistoryModal } from '@/components/OrderHistoryModal';
+import { DailySalesModal } from '@/components/DailySalesModal';
 import { MenuCardModal } from '@/components/MenuCardModal';
 import { AddMenuItemModal } from '@/components/AddMenuItemModal';
 import { EditMenuItemModal } from '@/components/EditMenuItemModal';
@@ -24,7 +25,8 @@ import {
   Menu as MenuIcon,
   ShoppingBag,
   Layers,
-  FileCheck2
+  FileCheck2,
+  TrendingUp
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -75,6 +77,7 @@ export default function POSPage() {
   const [activeReceiptOrder, setActiveReceiptOrder] = useState<Order | null>(null);
   const [orderHistory, setOrderHistory] = useState<Order[]>([]);
   const [showHistoryModal, setShowHistoryModal] = useState(false);
+  const [showDailySalesModal, setShowDailySalesModal] = useState(false);
   const [historyDefaultFilter, setHistoryDefaultFilter] = useState<'Completed' | 'Pending' | 'Cancelled' | 'All'>('All');
   const [showMenuCardModal, setShowMenuCardModal] = useState(false);
   const [showAddMenuModal, setShowAddMenuModal] = useState(false);
@@ -601,6 +604,10 @@ export default function POSPage() {
             setShowHistoryModal(true);
             setShowMobileSidebar(false);
           }}
+          onOpenDailySales={() => {
+            setShowDailySalesModal(true);
+            setShowMobileSidebar(false);
+          }}
           onOpenMenuCard={() => {
             setShowMenuCardModal(true);
             setShowMobileSidebar(false);
@@ -667,6 +674,16 @@ export default function POSPage() {
             <span className="hidden xs:inline-block text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">
               Live
             </span>
+
+            {/* Daily Sales Quick Access Button right next to Counter Terminal */}
+            <button
+              onClick={() => setShowDailySalesModal(true)}
+              className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-black transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
+              title="Open Daily Sales & Register Settlement (Z-Report)"
+            >
+              <TrendingUp className="w-3.5 h-3.5 text-emerald-200 shrink-0" />
+              <span>Daily Sales</span>
+            </button>
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2 text-xs shrink-0">
@@ -831,6 +848,14 @@ export default function POSPage() {
           onDeleteOrder={handleDeleteOrder}
           onCancelOrder={handleCancelOrder}
           onRestoreOrder={handleRestoreOrder}
+        />
+      )}
+
+      {showDailySalesModal && (
+        <DailySalesModal
+          orders={orderHistory}
+          currentDateStr={currentDateStr || new Date().toLocaleDateString('en-GB')}
+          onClose={() => setShowDailySalesModal(false)}
         />
       )}
 

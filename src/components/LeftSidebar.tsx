@@ -12,7 +12,8 @@ import {
   XCircle,
   ChevronRight,
   Trash2,
-  Sparkles
+  Sparkles,
+  TrendingUp
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -26,6 +27,7 @@ interface LeftSidebarProps {
   onOpenHistory: () => void;
   onOpenActiveTabs?: () => void;
   onOpenCancelled: () => void;
+  onOpenDailySales?: () => void;
   onOpenMenuCard: () => void;
   onOpenAddMenuItem: () => void;
   // Tables
@@ -60,6 +62,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
   onOpenHistory,
   onOpenActiveTabs,
   onOpenCancelled,
+  onOpenDailySales,
   onOpenMenuCard,
   onOpenAddMenuItem,
   tablesList,
