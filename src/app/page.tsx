@@ -687,7 +687,7 @@ export default function POSPage() {
             <button
               onClick={() => setShowDailySalesModal(true)}
               className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-black transition-all shadow-xs cursor-pointer active:scale-95 shrink-0"
-              title="Open Daily Sales & Register Settlement (Z-Report)"
+              title="Open Daily Sales & Register Settlement"
             >
               <TrendingUp className="w-3.5 h-3.5 text-emerald-200 shrink-0" />
               <span>Daily Sales</span>

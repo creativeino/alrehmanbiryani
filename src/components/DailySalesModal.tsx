@@ -336,7 +336,7 @@ export const DailySalesModal: React.FC<DailySalesModalProps> = ({
                 </div>
                 <div className="text-[10px] font-bold">&amp; PAKWAN CENTRE</div>
                 <div className="text-[11px] font-black uppercase tracking-widest bg-black text-white px-2 py-0.5 mt-1 inline-block">
-                  *** DAILY SALES / Z-REPORT ***
+                  *** DAILY SALES SUMMARY ***
                 </div>
               </div>
 
