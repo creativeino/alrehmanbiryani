@@ -66,40 +66,40 @@ export const OrderHistoryModal: React.FC<OrderHistoryModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-      <div className="bg-white border border-slate-200 text-slate-800 rounded-2xl max-w-4xl w-full h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-2 sm:p-4 overflow-y-auto">
+      <div className="bg-white border border-slate-200 text-slate-800 rounded-2xl max-w-4xl w-full max-h-[92dvh] h-[85vh] flex flex-col shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="p-4 bg-slate-900 text-white flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
-              <Clock className="w-5 h-5" />
+        <div className="p-3 sm:p-4 bg-slate-900 text-white flex items-center justify-between">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+              <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div>
-              <h3 className="font-bold text-base text-white">Daily Orders Management</h3>
-              <p className="text-xs text-slate-400">
-                Completed Sales: <span className="text-emerald-400 font-bold font-mono">Rs. {completedSales.toLocaleString()}</span> | Cancelled Orders:{' '}
+            <div className="min-w-0">
+              <h3 className="font-bold text-sm sm:text-base text-white truncate">Daily Orders Management</h3>
+              <p className="text-[11px] sm:text-xs text-slate-400 truncate">
+                Completed: <span className="text-emerald-400 font-bold font-mono">Rs. {completedSales.toLocaleString()}</span> | Cancelled:{' '}
                 <span className="text-rose-400 font-bold">{cancelledCount}</span>
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer shrink-0"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Filter bar */}
-        <div className="p-3 bg-slate-50 border-b border-slate-200 flex flex-wrap gap-2 items-center justify-between">
-          <div className="flex gap-2">
+        <div className="p-2 sm:p-3 bg-slate-50 border-b border-slate-200 flex flex-wrap gap-2 items-center justify-between">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {/* Status Filter */}
-            <div className="flex bg-slate-200 p-0.5 rounded-lg text-xs font-bold">
+            <div className="flex flex-wrap bg-slate-200 p-0.5 rounded-lg text-xs font-bold">
               {(['All', 'Pending', 'Completed', 'Cancelled'] as const).map((s) => (
                 <button
                   key={s}
                   onClick={() => setStatusFilter(s)}
-                  className={`px-2.5 py-1 rounded-md transition-all cursor-pointer ${
+                  className={`px-2 py-1 rounded-md transition-all cursor-pointer text-[11px] sm:text-xs ${
                     statusFilter === s
                       ? s === 'Cancelled'
                         ? 'bg-rose-600 text-white'
@@ -109,18 +109,18 @@ export const OrderHistoryModal: React.FC<OrderHistoryModalProps> = ({
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  {s === 'Pending' ? 'Running / Open Tabs' : s}
+                  {s === 'Pending' ? 'Running' : s}
                 </button>
               ))}
             </div>
 
             {/* Type Filter */}
-            <div className="flex gap-1">
+            <div className="flex flex-wrap gap-1">
               {['All', 'Dine-In', 'Takeaway', 'Delivery'].map((type) => (
                 <button
                   key={type}
                   onClick={() => setTypeFilter(type)}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold cursor-pointer border transition-all ${
+                  className={`px-2 py-1 rounded-lg text-[11px] sm:text-xs font-semibold cursor-pointer border transition-all ${
                     typeFilter === type
                       ? 'bg-amber-500 text-slate-950 font-bold border-amber-600'
                       : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-100'
@@ -132,14 +132,14 @@ export const OrderHistoryModal: React.FC<OrderHistoryModalProps> = ({
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative w-full sm:w-auto min-w-[200px]">
             <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search token, table, rider..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-8 pr-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:border-amber-500 w-52"
+              className="w-full text-xs pl-8 pr-3 py-1 bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-amber-500"
             />
           </div>
         </div>

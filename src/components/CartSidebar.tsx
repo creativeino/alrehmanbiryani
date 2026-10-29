@@ -124,7 +124,7 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({
   };
 
   return (
-    <div className="w-full sm:w-80 xl:w-[350px] flex flex-col h-full bg-white border-l border-slate-200/90 shadow-2xl z-20 select-none">
+    <div className="w-full flex flex-col h-full bg-white border-l border-slate-200/90 shadow-2xl z-20 select-none">
       {/* 1. Header with Mode Switcher */}
       <div className="p-2.5 bg-slate-50/80 border-b border-slate-200">
         <div className="flex items-center justify-between mb-2">

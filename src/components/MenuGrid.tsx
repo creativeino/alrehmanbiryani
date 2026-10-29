@@ -17,8 +17,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface MenuGridProps {
   items: MenuItem[];
   selectedCategory: string;
-  onSelectCategory: (cat: string) => void;
-  categories: readonly string[];
+  onSelectCategory?: (cat: string) => void;
+  categories?: readonly string[];
   onAddToCart: (item: MenuItem, event?: React.MouseEvent) => void;
   onShowOriginalMenu: () => void;
   onEditItem?: (item: MenuItem) => void;
@@ -28,6 +28,8 @@ interface MenuGridProps {
 export const MenuGrid: React.FC<MenuGridProps> = ({
   items,
   selectedCategory,
+  onSelectCategory,
+  categories = [],
   onAddToCart,
   onShowOriginalMenu,
   onEditItem,
@@ -54,12 +56,12 @@ export const MenuGrid: React.FC<MenuGridProps> = ({
   return (
     <div className="flex-1 flex flex-col h-full bg-[#f8fafc] border-r border-slate-200/80">
       {/* Top Search & Filter Bar */}
-      <div className="bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-6 py-2.5 flex items-center justify-between gap-4 shadow-2xs">
-        <div className="relative flex-1 max-w-md">
+      <div className="bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-3 sm:px-6 py-2 sm:py-2.5 flex flex-wrap items-center justify-between gap-2 sm:gap-4 shadow-2xs">
+        <div className="relative flex-1 min-w-[180px] max-w-md">
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 transition-colors group-focus-within:text-amber-500" />
           <input
             type="text"
-            placeholder="Search delicious biryani, pulao, drinks..."
+            placeholder="Search biryani, pulao, drinks..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-9 pr-8 py-1.5 bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-amber-500 rounded-xl text-xs font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-all shadow-2xs"
@@ -77,21 +79,21 @@ export const MenuGrid: React.FC<MenuGridProps> = ({
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 ml-auto">
           {onResetMenu && (
             <button
               onClick={onResetMenu}
-              className="hidden sm:flex items-center gap-1 px-2.5 py-1 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+              className="hidden md:flex items-center gap-1 px-2.5 py-1 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
               title="Reset all prices and items to original card menu"
             >
               <RotateCcw className="w-3 h-3 text-slate-400" />
-              <span>Reset Menu</span>
+              <span>Reset</span>
             </button>
           )}
 
-          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-100 rounded-lg border border-slate-200/70 text-xs">
+          <div className="hidden xs:flex items-center gap-1.5 px-2.5 py-1 bg-slate-100 rounded-lg border border-slate-200/70 text-xs">
             <span className="text-slate-400 font-medium">Filter:</span>
-            <span className="font-extrabold text-amber-800">{selectedCategory}</span>
+            <span className="font-extrabold text-amber-800 truncate max-w-[80px] sm:max-w-none">{selectedCategory}</span>
           </div>
 
           <motion.button
@@ -99,19 +101,42 @@ export const MenuGrid: React.FC<MenuGridProps> = ({
             whileTap={{ scale: 0.94 }}
             transition={{ type: 'spring', stiffness: 500, damping: 20 }}
             onClick={onShowOriginalMenu}
-            className="flex items-center gap-1.5 px-3 py-1 bg-linear-to-r from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 text-amber-900 border border-amber-200/80 rounded-xl text-xs font-bold transition-all shadow-2xs cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 bg-linear-to-r from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 text-amber-900 border border-amber-200/80 rounded-xl text-xs font-bold transition-all shadow-2xs cursor-pointer"
           >
             <ImageIcon className="w-3.5 h-3.5 text-amber-600" />
-            Original Card
+            <span className="hidden xs:inline">Original Card</span>
+            <span className="xs:hidden">Card</span>
           </motion.button>
         </div>
       </div>
 
+      {/* Horizontal Category Quick-Selector for Tablet & Mobile screens */}
+      {categories && categories.length > 0 && (
+        <div className="xl:hidden bg-white border-b border-slate-200 px-3 py-2 flex items-center gap-1.5 overflow-x-auto no-scrollbar shrink-0">
+          {categories.map((cat) => {
+            const isSelected = selectedCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => onSelectCategory?.(cat)}
+                className={`px-3 py-1 rounded-xl text-xs font-bold whitespace-nowrap transition-colors cursor-pointer shrink-0 ${
+                  isSelected
+                    ? 'bg-amber-500 text-slate-950 shadow-xs font-black'
+                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                }`}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
       {/* Modern Card Grid with $1000 Fluid Spring Physics & Micro-Glows */}
-      <div className="flex-1 overflow-y-auto p-3">
+      <div className="flex-1 overflow-y-auto p-2 sm:p-3 pb-20 lg:pb-3">
         <motion.div
           layout
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-2.5"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2 sm:gap-2.5"
         >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => {

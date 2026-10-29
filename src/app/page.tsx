@@ -569,11 +569,11 @@ export default function POSPage() {
   const cartSubtotal = cart.reduce((sum, item) => sum + item.item.price * item.quantity, 0);
 
   return (
-    <div className="flex h-screen w-screen bg-slate-50 text-slate-800 overflow-hidden font-sans select-none relative">
+    <div className="flex h-screen h-[100dvh] w-screen bg-slate-50 text-slate-800 overflow-hidden font-sans select-none relative">
       {/* 1. Left-Hand Dynamic Slidebar (Responsive Desktop + Mobile Drawer) */}
       <div
-        className={`fixed inset-y-0 left-0 z-40 transition-transform duration-300 lg:static lg:translate-x-0 ${
-          showMobileSidebar ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed inset-y-0 left-0 z-40 w-72 max-w-[85vw] transition-transform duration-300 xl:static xl:w-64 xl:max-w-none xl:translate-x-0 ${
+          showMobileSidebar ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
         }`}
       >
         <LeftSidebar
@@ -642,35 +642,36 @@ export default function POSPage() {
       {showMobileSidebar && (
         <div
           onClick={() => setShowMobileSidebar(false)}
-          className="fixed inset-0 bg-black/50 z-30 lg:hidden backdrop-blur-xs transition-opacity"
+          className="fixed inset-0 bg-black/60 z-30 xl:hidden backdrop-blur-xs transition-opacity animate-in fade-in"
         />
       )}
 
       {/* 2. Main Middle Menu Area */}
       <div className="flex-1 flex flex-col h-full overflow-hidden min-w-0">
         {/* Responsive Top Header Bar */}
-        <header className="h-12 bg-white border-b border-slate-200 px-3 sm:px-6 flex items-center justify-between z-10 shrink-0 gap-2">
-          <div className="flex items-center gap-2">
-            {/* Mobile Menu Drawer Toggle Button */}
+        <header className="h-12 sm:h-13 bg-white border-b border-slate-200 px-2 sm:px-4 md:px-6 flex items-center justify-between z-10 shrink-0 gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+            {/* Mobile / Tablet Menu Drawer Toggle Button */}
             <button
               onClick={() => setShowMobileSidebar(true)}
-              className="lg:hidden p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors cursor-pointer"
+              className="xl:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors cursor-pointer shrink-0"
               title="Open Navigation"
+              aria-label="Open Navigation Menu"
             >
               <MenuIcon className="w-4 h-4" />
             </button>
 
-            <h2 className="text-xs font-black text-slate-900 uppercase truncate">
+            <h2 className="text-xs sm:text-sm font-black text-slate-900 uppercase truncate">
               Counter Terminal
             </h2>
-            <span className="hidden sm:inline-block text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">
+            <span className="hidden xs:inline-block text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">
               Live
             </span>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 text-xs">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-xs shrink-0">
             {/* Live Free vs Occupied Table Counter */}
-            <div className="hidden md:flex items-center gap-2 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 text-[10px] font-bold">
+            <div className="hidden lg:flex items-center gap-2 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 text-[10px] font-bold">
               <span className="flex items-center gap-1 text-emerald-700">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                 {tablesList.length - occupiedTables.length} Free
@@ -684,13 +685,13 @@ export default function POSPage() {
 
             {editingOrderId && (
               <div className="flex items-center gap-1 bg-amber-100 border border-amber-300 text-amber-900 px-2 py-0.5 rounded-md font-bold text-[10px]">
-                <Edit3 className="w-3 h-3" />
-                <span className="hidden sm:inline">Editing Active Order</span>
+                <Edit3 className="w-3 h-3 shrink-0" />
+                <span className="hidden md:inline">Editing Active Order</span>
               </div>
             )}
 
-            <div className="hidden sm:flex items-center gap-1.5 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 text-slate-600 text-[11px]">
-              <Clock className="w-3 h-3 text-amber-600" />
+            <div className="hidden md:flex items-center gap-1.5 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 text-slate-600 text-[11px]">
+              <Clock className="w-3 h-3 text-amber-600 shrink-0" />
               <span className="font-mono font-bold text-slate-800">{currentTime || '12:00'}</span>
             </div>
 
@@ -700,24 +701,25 @@ export default function POSPage() {
                 setHistoryDefaultFilter('All');
                 setShowHistoryModal(true);
               }}
-              className="flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-950 px-2.5 py-0.5 rounded-md cursor-pointer transition-colors shadow-2xs"
+              className="flex items-center gap-1 bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-950 px-2 sm:px-2.5 py-1 rounded-md cursor-pointer transition-colors shadow-2xs"
               title="Today's Total Order Tickets"
             >
-              <FileCheck2 className="w-3.5 h-3.5 text-amber-600" />
-              <span className="text-[10px] font-bold text-amber-800">Today Orders:</span>
+              <FileCheck2 className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+              <span className="hidden sm:inline text-[10px] font-bold text-amber-800">Today:</span>
               <strong className="text-xs font-mono font-black text-amber-950">
                 {todayOrdersCount}
               </strong>
             </div>
 
-            <div className="flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 text-slate-600 text-[11px]">
+            <div className="flex items-center gap-1 bg-slate-100 px-2 py-1 rounded-md border border-slate-200 text-slate-600 text-[11px]">
               <span className="text-[10px] font-mono font-black text-slate-900">Token #{orderTokenCounter}</span>
             </div>
 
-            {/* Mobile Cart / Ticket Toggle Button */}
+            {/* Mobile / Tablet Cart / Ticket Toggle Button */}
             <button
               onClick={() => setShowMobileCart(true)}
-              className="lg:hidden flex items-center gap-1 px-2.5 py-1 bg-amber-500 text-slate-950 font-black text-xs rounded-lg shadow-sm cursor-pointer"
+              className="lg:hidden flex items-center gap-1.5 px-3 py-1.5 bg-linear-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-xs rounded-xl shadow-md cursor-pointer shrink-0 transition-transform active:scale-95"
+              aria-label="View Cart"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
               <span>{cartItemCount}</span>
@@ -738,10 +740,10 @@ export default function POSPage() {
         />
       </div>
 
-      {/* 3. Right-Hand Cart Sidebar (Responsive Desktop + Mobile Drawer) */}
+      {/* 3. Right-Hand Cart Sidebar (Responsive Desktop + Mobile/Tablet Drawer) */}
       <div
-        className={`fixed inset-y-0 right-0 z-40 transition-transform duration-300 lg:static lg:translate-x-0 ${
-          showMobileCart ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed inset-y-0 right-0 z-40 w-80 sm:w-88 max-w-[90vw] lg:w-76 xl:w-84 2xl:w-[350px] transition-transform duration-300 lg:static lg:max-w-none lg:translate-x-0 ${
+          showMobileCart ? 'translate-x-0 shadow-2xl' : 'translate-x-full'
         }`}
       >
         <CartSidebar
@@ -778,26 +780,27 @@ export default function POSPage() {
       {showMobileCart && (
         <div
           onClick={() => setShowMobileCart(false)}
-          className="fixed inset-0 bg-black/50 z-30 lg:hidden backdrop-blur-xs transition-opacity"
+          className="fixed inset-0 bg-black/60 z-30 lg:hidden backdrop-blur-xs transition-opacity animate-in fade-in"
         />
       )}
 
-      {/* Floating Bottom Bar for Mobile Screen if Cart has items */}
+      {/* Floating Bottom Bar for Mobile / Small Tablet Screen if Cart has items */}
       {cartItemCount > 0 && !showMobileCart && (
-        <div className="fixed bottom-3 inset-x-3 lg:hidden z-20">
+        <div className="fixed bottom-3 inset-x-3 sm:bottom-4 sm:inset-x-6 lg:hidden z-20">
           <button
             onClick={() => setShowMobileCart(true)}
-            className="w-full py-3 px-4 bg-linear-to-r from-amber-500 to-orange-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-2xl shadow-2xl flex items-center justify-between animate-shimmer-sweep"
+            className="w-full py-3 px-4 bg-linear-to-r from-amber-500 via-amber-400 to-orange-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-2xl shadow-2xl flex items-center justify-between animate-shimmer-sweep active:scale-[0.98] transition-transform"
           >
             <div className="flex items-center gap-2">
               <span className="w-6 h-6 rounded-lg bg-slate-950 text-amber-400 flex items-center justify-center font-mono text-xs font-black">
                 {cartItemCount}
               </span>
-              <span>View Order Ticket</span>
+              <span>View Current Order</span>
             </div>
-            <span className="font-mono font-black text-sm">
-              Rs. {cartSubtotal}
-            </span>
+            <div className="flex items-center gap-1.5 font-mono text-sm font-black">
+              <span>Rs. {cartSubtotal}</span>
+              <span className="text-[10px] bg-slate-950/20 px-1.5 py-0.5 rounded">Checkout &rarr;</span>
+            </div>
           </button>
         </div>
       )}

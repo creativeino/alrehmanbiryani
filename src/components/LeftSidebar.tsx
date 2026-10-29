@@ -89,7 +89,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
   const [showAddRider, setShowAddRider] = React.useState<boolean>(false);
 
   return (
-    <aside className="w-full sm:w-72 lg:w-64 h-full bg-white text-slate-800 flex flex-col border-r border-slate-200/80 shrink-0 select-none shadow-[2px_0_16px_rgba(0,0,0,0.03)] z-10">
+    <aside className="w-full h-full bg-white text-slate-800 flex flex-col border-r border-slate-200/80 shrink-0 select-none shadow-[2px_0_16px_rgba(0,0,0,0.03)] z-10">
       {/* Brand & Logo Header - Clean White Brand Pill with Subtle Floating Animation */}
       <div className="p-3 border-b border-slate-100 flex items-center justify-between gap-2 bg-white">
         <motion.div
@@ -110,7 +110,7 @@ export const LeftSidebar: React.FC<LeftSidebarProps> = ({
         {onCloseMobile && (
           <button
             onClick={onCloseMobile}
-            className="lg:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors"
+            className="xl:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors"
           >
             <XCircle className="w-5 h-5 text-slate-500" />
           </button>
